@@ -13,6 +13,7 @@ try:
 
     soup = BeautifulSoup(page.text, 'html.parser')
     events = soup.find('tbody').find_all('tr')
+    
     for i in events:
         ID = i.find('td').a.text
         name = i.find('td').find_next_siblings()[0].text
@@ -24,7 +25,7 @@ try:
     #print(IDs)
     #print(names)
     #print(dates)
-        #id = i.get_text(strip=True)
+    
     df = pd.DataFrame({'event ID': IDs, 'event name': names, 'end date': dates})
     df.to_csv('C:\\Users\\ASUS\\Desktop\\Taiyo\\events.csv', index=False)
 
